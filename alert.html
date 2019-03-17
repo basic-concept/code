@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<title>Title</title>-->
+    <!--<script type="text/javascript">-->
+        <!--var a = 100;-->
+        <!--function fn() {-->
+            <!--alert(a);-->
+            <!--var a = 200;-->
+            <!--alert(a);-->
+        <!--}-->
+        <!--fn();-->
+        <!--alert(a);-->
+        <!--var a;-->
+        <!--alert(a);-->
+        <!--var a = 300;-->
+        <!--alert(a);-->
+    <!--</script>-->
+    <script>
+        var obj1 = {name: 'obj1', fn: function() {
+            console.log(this.name)
+                document.write(this.name);
+            }};
+        var obj2 = {name: 'obj2'};
+        var obj3 = {name: 'obj3'};
+        obj1.fn();
+        var newFn = obj1.fn;
+        newFn();
+        newFn.call(obj2);
+        obj3.fn = newFn;
+        obj3.fn();
+    </script>
+    <script>
+        function parSort(par) {
+            return par.sort(function (arr1, arr2) {
+                return arr1.age > arr2.age ? 1:-1
+            })
+        }
+        var par = [{
+            age: 2,
+            name: 'fff'
+        },{
+            age: 5,
+            name: 'fffff'
+        },{
+            age: 6,
+            name: 'ffffstt'
+        }]
+        console.log(parSort(par))
+    </script>
+    <script>
+        var str  = 'abc345efgabcab'
+        console.log(str.replace(/[a-c]/g,""))
+
+        var str2 = str.replace(/(\d)/g,"[$1]")
+        console.log(str2)
+        var str3 = str.replace(/(\d)/g,function (num) {
+            return num * 2
+        })
+        console.log(str3)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

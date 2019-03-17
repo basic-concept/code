@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+	<!-- <script type="text/javascript">
+		function asyncFunction(){
+			return new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve('Async Hello world');
+				}, 16);
+			});
+		}
+
+		asyncFunction().then(function (value){
+			console.log(value);
+		}).catch(function (error){
+			console.log(error);
+		})
+		asyncFunction().then(function (value){
+			console.log(value);
+		},function(error){
+			console.log(error);
+		})
+	</script> -->
+	<!-- <script type="text/javascript">
+		function getURL(URL){
+			return new Promise(function (resolve,reject){
+				var req = new XMLHttpRequest();
+				req.open("get",URL,true);
+				req.onload = function (){
+					if (req.status == 200){
+						resolve(req.responseText);
+					} else {
+						reject(new Error(req.responseText));
+					}
+				};
+				req.onerror = function (){
+					console.log('error');
+					reject(new Error(req.statusText));
+				};
+				req.send();
+			})
+		};
+		// var URL = "http://httpbin.org/get";
+		var URL = "http://httpbin.org/status/500"; 
+		getURL(URL).then(function onFullfilled(value){
+			console.log(value);
+		}).catch(function onRejected(error){
+			console.log(error);
+		})
+	</script> -->
+	<!-- <script type="text/javascript">
+		Promise.resolve(42).then(function(value){
+			console.log(value);
+		})
+	</script> -->
+	<!-- <script type="text/javascript">
+		var promise1 = new Promise(function (resolve){
+			console.log('inner promise'); //1
+			resolve(43); //3
+		});
+		promise1.then(function(value){
+			console.log(value);  //3
+		});
+		console.log("outer promise"); //2
+	</script> -->
+	<!-- <script type="text/javascript">
+		// 同步、异步处理
+		function onReadyPromise(){
+			return new Promise(function (resolve,reject){
+				var readyState = document.readyState;    //1
+				console.log(readyState);
+				if (readyState === 'interactive' || readyState === 'complete'){
+					resolve();
+				} else {
+					console.log('add listener');
+					window.addEventListener('DOMContentLoaded',resolve);
+				}
+			});
+		}
+		onReadyPromise().then(function (){
+			console.log('DOM fully loaded and parsed.')
+		})
+		console.log('==Starting==') //2
+	</script>
+ -->	<!-- <script type="text/javascript">
+		function taskA(){
+			console.log("Task A");
+			// throw new Error("throw Error @ Task A");
+		}
+		function taskB(){
+			console.log("Task B")
+		}
+		function onRejected(){
+			console.log('Catch Error:A or B',error);
+		}
+		function finalTask(){
+			console.log("Final Task");
+		}
+		var promise = Promise.resolve();
+		promise.then(taskA).then(taskB).catch(onRejected).then(finalTask);
+	</script> -->
+	<!-- <script type="text/javascript">
+		function doubleUp(value){
+			return value * 2;
+		}
+		function increment(value){
+			return value +1;
+		}
+		function output(value){
+			console.log(value);
+		}
+
+		var promise = Promise.resolve(1);
+		promise.then(increment).then(doubleUp).then(output)
+		.catch(function(error){
+			console.error(error);
+		})
+	</script> -->
+	<!-- <script type="text/javascript">
+		var promise = Promise.reject(new Error("message"));
+		promise.catch(function (error){
+			console.error(error);
+		})
+		promise["catch"](function (error){
+			console.error(error);
+		})
+	</script>
+	<script type="text/javascript">
+		var aPromise = new Promise(function(resolve){
+			resolve(100);
+		});
+		aPromise.then(function(value){
+			return value *2;
+		});
+		aPromise.then(function(value){
+			return value *2;
+		});
+		aPromise.then(function(value){
+			console.log("1:" + value); //100
+		})
+
+		var bPromise = new Promise(function(resolve){
+			resolve(100);
+		})
+		bPromise.then(function(value){
+			return value *2 ;
+		}).then(function(value){
+			return value *2;
+		}).then(function(value){
+			console.log("2:" + value); //400
+		})
+	</script> -->
+	<script type="text/javascript" src="promise/multiple-xhr-callback.js"></script>
+	<script type="text/javascript" src="promise/promise-all-xhr.js"></script>
+	<script type="text/javascript" src="promise/promise-all-timer.js"></script>
+	<script type="text/javascript" src="promise/promise-race-timer.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

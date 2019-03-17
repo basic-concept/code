@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="inner">A</div>
+    </div>
+</body>
+</html>
+script start
+a1 start
+a2
+promise2
+script end
+// 此处开始执行异步队列
+promise1
+promise2.then
+promise3
+// 真的不知道 a1 end 为啥在这里才输出，还以为会在promise1 后面。。
+// 大家知道的话可以评论区分享一下啊～在网上看到的答案都说得模凌两可的
+a1 end
+// 执行完所有微任务才执行宏任务
+setTimeout

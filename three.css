@@ -1,0 +1,167 @@
+.left{
+	float: left;
+	width: 100px;
+	height: 200px;
+	background: red;
+}
+
+.right{
+	float: right;
+	width: 100px;
+	height: 200px;
+	background: yellow;
+}
+.main{
+	background: green;
+	height: 200px;
+}
+.container{
+	border: 0px solid black;
+}
+
+
+.container1{
+	/*position: absolute;*/
+}
+.left1{
+	left: 0;
+	width: 200px;
+	background: red;
+	position: absolute;
+}
+.right1{
+	right: 0;
+	width:200px;
+	background: yellow;
+	position: absolute;
+}
+.center1{
+	left:200px;
+	right: 200px;
+	background: blue;
+	position: absolute;
+}
+
+
+
+.container2{
+	display: flex;
+}
+.left2{
+	width: 200px;
+	background: red;
+}
+.right2{
+	width:200px;
+	background: yellow;
+}
+.center2{
+	flex: 1;
+	background: blue;
+}
+
+
+.container3{
+	display: table;
+	width: 100%;
+}
+.container3 div {
+	display: table-cell;
+}
+.left3{
+	width: 200px;
+	background: red;
+}
+.right3{
+	width:200px;
+	background: yellow;
+}
+.center3{
+	background: blue;
+}
+
+
+
+
+
+.container4{
+	display: grid;
+	width: 100%;
+	grid-template-rows: 200px; /*设置行高*/
+	grid-template-columns: 100px auto 200px; /*设置列数属性*/
+}
+.left4{
+	background: red;
+}
+.right4{
+	background: yellow;
+}
+.center4{
+	background: blue;
+}
+
+
+
+
+
+.container5{
+	padding: 0 200px 0 100px; /*上右下左*/
+}
+.col {
+	float: left;
+	position: relative;
+}
+.left5{
+	left:-100px;
+	width: 100px;
+	height: 300px;
+	margin-left: -100%;
+	background: #ff6964;
+}
+.right5{
+	right: -200px;
+	width: 200px;
+	height: 300px;
+	margin-left: -200px; /*right宽度的负值*/
+	background: #ff6964;
+}
+.center5{
+	width: 100%;
+	height: 200px;
+	background: #659;
+}
+
+
+
+.main22 {
+    float: left;
+    width: 100%;
+}
+.content22 {
+    height: 200px;
+    margin: 0 200px 0 100px;
+    background-color: green;
+}
+         
+/*.main22::after {
+    display: block;
+    content: '';
+    font-size: 0;
+    height: 0;
+    clear: both;
+    zoom: 1;
+}*/
+.left22 {
+    float: left;
+    height: 200px;
+    width: 100px;
+    margin-left: -100%;
+    background-color: red;
+}
+.right22 {
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: -200px;
+    background-color: blue;
+}   

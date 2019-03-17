@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = ['1','1','1',null,null,undefined,undefined,NaN,NaN];
+		console.log(new Set(arr))
+
+		var newArr = Array.from(new Set(arr))
+		console.log(newArr)
+	</script>
+	<script type="text/javascript">
+
+		// 调用ES6的Map()
+		// 返回true的元素
+		function unique(arr){
+			const res = new Map();
+			return arr.filter((a) => !res.has(a) && res.set(a,1))
+		}
+		console.log(unique(arr))
+
+
+        let arr1 = [1, 1, 1, 2, 3, 3, 4, 5, 5, "a", "b", "a"];
+		function arrayNonRepeatfy(arr){
+			let hashMap = new Map();
+			let result = new Array();
+			for (let i=0;i<arr1.length;i++){
+				if(hashMap.has(arr1[i])){
+					hashMap.set(arr1[i],true);
+				}else {
+					hashMap.set(arr1[i],false);
+					result.push(arr1[i])
+				}
+			}
+			console.log(hashMap)
+			return result;
+		}
+		console.log(arrayNonRepeatfy(arr1))
+
+	</script>
+	<script type="text/javascript">
+		Array.prototype.deduplication = function(){
+			var o = {};
+			var len = this.length;
+			var result = [];
+			for (var i = 0;i<len;i++){
+				if (!o[this[i]]){
+					o[this[i]] =1;
+					result[result.length] = this[i]
+				}
+			}
+			return result
+		}
+		var arr3 = [1, 9, 8, 5, 9, 6, 5, 1]
+		console.log(arr3.deduplication())
+		console.log(arr.deduplication())
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

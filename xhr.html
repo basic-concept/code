@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<script type="text/javascript">
+      function ajaxTest(){
+        var xhr = new XMLHttpRequest();
+        // xhr.onreadystatechange = function () { //异步请求 
+        //   console.log(xhr.readyStatus)
+        //   if (xhr.readyState == 4){
+        //     if ((xhr.status >=200 && xhr.status < 300) || xhr.status == 304){
+        //       console.log(xhr.responseText)
+        //     } else {
+        //       console.log("Request was unsuccessful:" + xhr.status)
+        //     }
+        //   }
+        // }
+        xhr.onload = function (event){
+          console.log(event)
+          if ((xhr.status >=200 && xhr.status < 300) || xhr.status == 304 ){
+            alert(xhr.responseText);
+          } else {
+            alert("Request was unsuccessful:" + xhr.status);
+          }
+        }
+        xhr.onprogress = function(event){
+          console.log(event)
+          console.log(event.lengthComputable)
+          var divStatus = document.getElementById("status");
+          if (event.lengthComputable){
+            divStatus.innerHTML = "Received" + event.position + "of" + event.totalSize + "bytes";
+          }
+        }
+        xhr.open("post","http://result.eolinker.com/ir4qGJKed241c5a42bdfb8b083224dbf190f8b770cac539?uri=/user/login",true);
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.timeout = 1000;
+        xhr.ontimeout = function(){
+          alert("Request did not return in a second");
+        };
+        var form = document.getElementById("user-info"); 
+        // xhr.send(serialize(form));
+        xhr.send(null);
+        if (xhr.status >=200 && xhr.status < 300 || xhr.status == 304){
+          alert(xhr.responseText);
+        } else {
+          alert("Request was unsuccessful:" + xhr.status);
+        }
+      } 
+      // ajaxTest();
+      async function ajaxTest1(){ //IE浏览器
+        var xdr = new XDomainRequest();
+        xdr.onload = function(){
+          alert(xhr.responseText);
+        };
+        xdr.onerror = function(){
+          alert("An error occurred.")
+        }
+        xdr.open("get","http://result.eolinker.com/2iwkBiged241c5a42bdfb8b083224dbf190f8b770cac539?uri=/super/login");
+        xdr.send(null);
+      }
+      // ajaxTest1();
+      function createCORSRequest(method,url){
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr){
+          xhr.open(method,url,true);
+        } else if (typeof XDomainRequest != "undefined"){
+          xhr = new XDomainRequest();
+          xhr.open(method,url);
+        } else {
+          xhr = null;
+        }
+        return xhr;
+      }
+      // var request = createCORSRequest("get", "http://result.eolinker.com/2iwkBiged241c5a42bdfb8b083224dbf190f8b770cac539?uri=/super/login",true);
+      // if (request){
+      //   request.onload = function(){
+      //     console.log(request.responseText)
+      //   }
+      //   request.send();
+      // }
+      function donwImage(){
+        var img = new Image();
+        img.onload = img.onerror = function(){
+          alert("Done!")
+        };
+        img.src = "https://wechatx.offerqueens.cn/weimage/list2.png";
+
+      }
+      // donwImage();
+      function createStreamClient(url,progress,finished){
+        var xhr = new XMLHttpRequest(),
+                  received = 0;
+        xhr.open("get",url,true);
+        xhr.onreadystatechange = function(){
+          var result;
+          if (xhr.readyState == 3){
+            console.log(xhr.readyState);
+            result = xhr.responseText.substring(received);
+            received += result.length;
+
+            console.log(received);
+            progress(result);
+          } else if (xhr.readyState == 4){
+            console.log(xhr.readyState);
+            finished(xhr.responseText);
+          }
+        };
+        xhr.send(null);
+        return xhr;
+      }
+      var client = createStreamClient("http://result.eolinker.com/2iwkBiged241c5a42bdfb8b083224dbf190f8b770cac539?uri=/super/login",function(data){
+        alert("Received:" + data)
+      },function(data){
+        alert("Done!")
+      })
+    </script>
+  </head>
+  <body>
+    <div id="user-info">User-Info</div>
+    <div id="status"></div>
+  </body>
+  <!-- <script type="text/javascript">
+  function handleResponse(response){
+        alert("You're at IP address" + response.ip + ",which is in" + response.city + "," + response.region_name);
+      }
+      var script = document.createElement("script");
+      script.src = "http://freegeoip.net/json?callback=handleResponse";
+      document.body.insertBefore(script,document.body.firstChild);  
+  </script> -->
+</html>
